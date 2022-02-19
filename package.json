@@ -1,0 +1,25 @@
+{
+  "name": "backend_tyba",
+  "version": "1.0.0",
+  "description": "Prueba técnica de backend en Node.js",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mikeyudex/backend_tyba.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mikeyudex/backend_tyba/issues"
+  },
+  "homepage": "https://github.com/Mikeyudex/backend_tyba#readme",
+  "dependencies": {
+    "@types/express": "^4.17.13",
+    "express": "^4.17.3",
+    "nodemon": "^2.0.15"
+  }
+}
