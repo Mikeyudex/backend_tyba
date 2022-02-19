@@ -4,7 +4,8 @@
   "description": "Prueba técnica de backend en Node.js",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon dist/index.js"
+    "dev": "nodemon dist/index.js",
+    "deploy": "tsc && node dist/index.js"
   },
   "repository": {
     "type": "git",

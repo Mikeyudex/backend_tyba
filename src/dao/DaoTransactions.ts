@@ -1,9 +1,17 @@
 import Transaction from '../models/transactions.model';
 import { typesTransaction } from '../interfaces/typesTransaction';
 
+/**
+     * Clase que se encarga de manejar las consultas hacia la base de datos en la colección Transaction.
+     * @author Miguel García
+*/
 export class DaoTransactions {
 
 
+  /**
+       * Método que se encarga de crear un registro en la colección Transaction.
+       * @param {typesTransaction} data
+  */
   public createTransaction(data: typesTransaction) {
 
     return new Promise<string>(async (resolve, reject) => {
@@ -19,10 +27,14 @@ export class DaoTransactions {
     })
   }
 
+  /**
+       * Método que se encarga de consultar por usuario la lista de transacciones ejecutadas.
+       * @param {string} username
+  */
   public async getTransactionByUsername(username: string) {
-    return new Promise<any>(async(resolve, reject) => {
+    return new Promise<any>(async (resolve, reject) => {
       try {
-        let results = await Transaction.find({username:username});
+        let results = await Transaction.find({ username: username });
         resolve(results);
       } catch (error) {
         console.log(error);
