@@ -20,13 +20,10 @@ export class DaoTransactions {
   }
 
   public async getTransactionByUsername(username: string) {
-    return new Promise<any>((resolve, reject) => {
+    return new Promise<any>(async(resolve, reject) => {
       try {
-        Transaction.find({ username }, (error, transactions: any) => {
-          if (error) reject(error);
-          resolve(transactions)
-        })
-        
+        let results = await Transaction.find({username:username});
+        resolve(results);
       } catch (error) {
         console.log(error);
         reject(error)
