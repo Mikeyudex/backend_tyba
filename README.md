@@ -1,2 +1,2 @@
 # backend_tyba
-Prueba técnica 
+Prueba técnica de backend en Node.js
