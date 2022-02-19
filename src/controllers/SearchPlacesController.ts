@@ -1,13 +1,14 @@
 import { Response } from 'express';
 import { SearchPlacesService } from '../services/SearchPlacesService';
+import { typesSearchPlacesRequest } from '../interfaces/typesSearchPlacesRequest';
 
 const searchPlacesService: SearchPlacesService = new SearchPlacesService();
 
 const searchPlacesController = async (req: any, res: Response) => {
 
     try {
-
-        let responseService:any = await searchPlacesService.searchByCoords()
+        let typesRequest : typesSearchPlacesRequest = req.body;
+        let responseService:any = await searchPlacesService.searchByCoords(typesRequest)
         res.status(200).json(
             {
                 message: responseService,

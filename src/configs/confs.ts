@@ -6,7 +6,7 @@ export interface configsTypes {
 
 const confs : configsTypes  = {
     secretKey: process.env.SECRETKEY,
-    APIKEY: process.env.APIKEYGOOGLE || ""
+    APIKEY: process.env.APIKEY || ""
 }
 
 module.exports = confs

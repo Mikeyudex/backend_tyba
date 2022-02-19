@@ -11,9 +11,6 @@ const routerAuth = require('./routes/auth.routes');
 app.use(bodyParser.json());
 app.use(cors());
 
-
-
-
 //Up Server
 app.listen(process.env.PORT, () => {
     console.log(`Server on port 2500`);
