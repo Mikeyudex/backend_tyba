@@ -2,7 +2,7 @@ import VerifyToken from '../middlewares/verifyToken'
 const validateToken = new VerifyToken()
 
 import { DaoUsers } from '../dao/DaoUsers';
-import { Request, Response } from 'express';
+import { Response } from 'express';
 const users = new DaoUsers();
 
 
@@ -10,7 +10,6 @@ const createUser = async (req: any, res: Response) => {
 
     try {
 
-        await validateToken.verify(req.token)
         let responseUser: string = await users.createUser(req.body)
         res.status(200).json(
             {

@@ -30,7 +30,7 @@ app.get('/', (req: Request, res: Response) => {
 
 
 //Register User
-app.use("/create-user", userRoutes);
+app.use("/users", userRoutes);
 
 //Routes Authorization
 app.use('/service/v1/authorization', routerAuth);
