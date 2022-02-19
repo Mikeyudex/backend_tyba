@@ -4,9 +4,10 @@ import { typesSearchPlacesRequest } from '../interfaces/typesSearchPlacesRequest
 const validateDataRequest = (req: any, res: any, next: any) => {
 
     const dataRequest: typesSearchPlacesRequest = req.body
-
-    if (dataRequest.lat.length === 0 && dataRequest.lon.length === 0) {
-        res.status(500).json(
+    console.log(dataRequest)
+    if (dataRequest.lat.length === 0 || dataRequest.lon.length === 0) {
+ 
+        return res.status(500).json(
             {
                 message: 'Las propiedades lat y lon no pueden enviarse vacías.',
                 error: true
@@ -18,4 +19,4 @@ const validateDataRequest = (req: any, res: any, next: any) => {
     }
 };
 
-module.exports = {validateDataRequest}
+module.exports = validateDataRequest

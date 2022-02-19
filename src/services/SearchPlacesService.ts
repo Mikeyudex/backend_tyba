@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from "axios";
+import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 const configs: configsTypes = require('../configs/confs')
 import { configsTypes } from '../configs/confs'
 import { typesSearchPlacesRequest } from '../interfaces/typesSearchPlacesRequest';
@@ -17,12 +17,14 @@ export class SearchPlacesService {
       };
 
       axios(config)
-        .then((response) => {
+        .then((response:AxiosResponse) => {
+          if(response.status != 200){
+            reject(response?.data)
+          }
           resolve(response.data)
         })
         .catch((error) => {
-          console.log(error);
-          reject(error)
+          reject(error?.response?.data)
         });
     })
   }
