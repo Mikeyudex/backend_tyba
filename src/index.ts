@@ -33,7 +33,7 @@ app.get('/', (req: Request, res: Response) => {
 app.use("/users", userRoutes);
 
 //Routes Authorization
-app.use('/service/v1/authorization', routerAuth);
+app.use('/authorization', routerAuth);
 
 //Api
 app.use("/service/v1",validateToken, serviceRoutes);
