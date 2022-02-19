@@ -3,11 +3,10 @@ FROM node:14
 WORKDIR /app
 
 COPY package*.json ./
+COPY tsconfig.json ./
 
 RUN npm install
 
-RUN npm install -G typescript
-
 COPY . .
 
-CMD [ "npm" , "deploy"]
+CMD [ "node" , "./dist/index.js"]
