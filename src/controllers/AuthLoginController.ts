@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import jwt from 'jsonwebtoken'
-const configs = require('../configs/confs')
+const configs = require('../configs/confs');
 const ValidateUser = require('../middlewares/validateUser')
 
 /** 

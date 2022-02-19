@@ -4,6 +4,6 @@ const router: Router = express.Router();
 const validateDataRequest = require('../middlewares/validateDataRequest')
 
 
-router.get("/searchByCoords", validateDataRequest, searchPlacesController);
+router.get("/searchByCoords",validateDataRequest, searchPlacesController);
 
 module.exports = router;
