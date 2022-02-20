@@ -35,42 +35,24 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var DaoUsers_1 = require("../dao/DaoUsers");
-var hashedPassword = require('../utils/hashedPassword').hashedPassword;
-var users = new DaoUsers_1.DaoUsers();
-var createUser = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, username, email, password, passwordHashed, responseUser, error_1;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
-            case 0:
-                _b.trys.push([0, 3, , 4]);
-                _a = req.body, username = _a.username, email = _a.email, password = _a.password;
-                return [4 /*yield*/, hashedPassword(password)];
-            case 1:
-                passwordHashed = _b.sent();
-                return [4 /*yield*/, users.createUser({
-                        username: username, email: email, password: passwordHashed
-                    })];
-            case 2:
-                responseUser = _b.sent();
-                res.status(200).json({
-                    message: responseUser,
-                    error: false
-                });
-                return [3 /*break*/, 4];
-            case 3:
-                error_1 = _b.sent();
-                console.log(error_1);
-                res.status(500).json({
-                    message: "Ha ocurrido un error interno",
-                    error: true
-                });
-                return [3 /*break*/, 4];
-            case 4: return [2 /*return*/];
-        }
+var bcrypt_1 = __importDefault(require("bcrypt"));
+var hashedPassword = function (password) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        return [2 /*return*/, new Promise(function (resolve, reject) {
+                try {
+                    var passHashed = bcrypt_1.default.hashSync(password, 12);
+                    resolve(passHashed);
+                }
+                catch (error) {
+                    reject(error);
+                }
+            })];
     });
 }); };
 module.exports = {
-    createUser: createUser
+    hashedPassword: hashedPassword
 };

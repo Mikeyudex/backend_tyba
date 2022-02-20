@@ -42,37 +42,42 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 var configs = require('../configs/confs');
 var ValidateUser = require('../middlewares/validateUser');
+var comparePassword = require('../utils/comparePassword').comparePassword;
 /**
      * Autentica al usuario, devolviendo un token
      * @param {Request} req
      * @param {Response} res
     */
 var AuthLogin = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var username, token, error_1;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
+    var _a, username, password, user, token, error_1;
+    var _b;
+    return __generator(this, function (_c) {
+        switch (_c.label) {
             case 0:
-                _a.trys.push([0, 4, , 5]);
-                username = req.body.username;
+                _c.trys.push([0, 5, , 6]);
+                _a = req.body, username = _a.username, password = _a.password;
                 if (!(username == undefined || null || username.length == 0)) return [3 /*break*/, 1];
                 res.status(500).json({ error: true, errorMessage: "Debe ingresar un username" });
-                return [3 /*break*/, 3];
+                return [3 /*break*/, 4];
             case 1: return [4 /*yield*/, ValidateUser(username)];
             case 2:
-                _a.sent();
-                token = jsonwebtoken_1.default.sign({ username: username }, configs.secretKey);
+                user = _c.sent();
+                return [4 /*yield*/, comparePassword(password, (_b = user[0]) === null || _b === void 0 ? void 0 : _b.password)];
+            case 3:
+                _c.sent();
+                token = jsonwebtoken_1.default.sign({ username: username, password: password }, configs.secretKey);
                 res.status(200).json({
                     message: 'Autenticación correcta',
                     token: token
                 });
-                _a.label = 3;
-            case 3: return [3 /*break*/, 5];
-            case 4:
-                error_1 = _a.sent();
+                _c.label = 4;
+            case 4: return [3 /*break*/, 6];
+            case 5:
+                error_1 = _c.sent();
                 console.log(error_1);
                 res.status(500).json({ error: true, errorMessage: error_1 });
-                return [3 /*break*/, 5];
-            case 5: return [2 /*return*/];
+                return [3 /*break*/, 6];
+            case 6: return [2 /*return*/];
         }
     });
 }); };

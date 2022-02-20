@@ -10,7 +10,7 @@ const validateUser = async (username: string) => {
             const resultado = await users.getUserByUsername(username)
 
             if(resultado != null) {
-                resolve()
+                resolve(resultado)
             } else {
                 reject("Lo sentimos no existe el usuario.")
             }

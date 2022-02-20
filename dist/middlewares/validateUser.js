@@ -51,7 +51,7 @@ var validateUser = function (username) { return __awaiter(void 0, void 0, void 0
                         case 1:
                             resultado = _a.sent();
                             if (resultado != null) {
-                                resolve();
+                                resolve(resultado);
                             }
                             else {
                                 reject("Lo sentimos no existe el usuario.");
