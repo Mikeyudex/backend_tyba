@@ -56,9 +56,11 @@ var AuthLogin = function (req, res) { return __awaiter(void 0, void 0, void 0, f
             case 0:
                 _c.trys.push([0, 5, , 6]);
                 _a = req.body, username = _a.username, password = _a.password;
-                if (!(username == undefined || null || username.length == 0)) return [3 /*break*/, 1];
-                res.status(500).json({ error: true, errorMessage: "Debe ingresar un username" });
-                return [3 /*break*/, 4];
+                if (password === undefined || password === null || password.length === 0) {
+                    return [2 /*return*/, res.status(500).json({ error: true, errorMessage: "Debe ingresar una contraseña" })];
+                }
+                if (!(username === undefined || username === null || username.length === 0)) return [3 /*break*/, 1];
+                return [2 /*return*/, res.status(500).json({ error: true, errorMessage: "Debe ingresar un username" })];
             case 1: return [4 /*yield*/, ValidateUser(username)];
             case 2:
                 user = _c.sent();
